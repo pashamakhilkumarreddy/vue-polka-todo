@@ -1,0 +1,102 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'NunitoSans';
+  src: url('../fonts/NunitoSans/NunitoSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansItalic';
+  src: url('../fonts/NunitoSans/NunitoSans-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansBold';
+  src: url('../fonts/NunitoSans/NunitoSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansBlack';
+  src: url('../fonts/NunitoSans/NunitoSans-Black.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansBlackItalic';
+  src: url('../fonts/NunitoSans/NunitoSans-BlackItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansBoldItalic';
+  src: url('../fonts/NunitoSans/NunitoSans-BoldItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansExtraBold';
+  src: url('../fonts/NunitoSans/NunitoSans-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansExtraBoldItalic';
+  src: url('../fonts/NunitoSans/NunitoSans-ExtraBoldItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansExtraLight';
+  src: url('../fonts/NunitoSans/NunitoSans-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansExtraLightItalic';
+  src: url('../fonts/NunitoSans/NunitoSans-ExtraLightItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansLight';
+  src: url('../fonts/NunitoSans/NunitoSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansLightItalic';
+  src: url('../fonts/NunitoSans/NunitoSans-LightItalic.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansSemiBold';
+  src: url('../fonts/NunitoSans/NunitoSans-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'NunitoSansSemiBoldItalic';
+  src: url('../fonts/NunitoSans/NunitoSans-SemiBoldItalic.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'NunitoSans', -apple-system, system-ui, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  min-height: 100vh;
+}
+
+.flex-center {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+img {
+  width: auto;
+  height: 100%;
+}

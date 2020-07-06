@@ -1,21 +1,29 @@
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import VueFragment from 'vue-fragment';
-import { sync } from 'vuex-router-sync';
+import {
+  Plugin,
+} from 'vue-fragment';
+import {
+  sync,
+} from 'vuex-router-sync';
 
-import store from '@/store';
-import App from './App.vue';
 import router from './routes';
+import store from './store';
 
-import '../node_modules/bulma/css/bulma.min.css';
+import App from './App.vue';
+import './registerServiceWorker';
+import '../node_modules/spectre.css/dist/spectre.min.css';
+import './assets/styles/main.scss';
 
-Vue.config.productionTip = false;
 Vue.use(VueMeta);
-Vue.use(VueFragment);
+Vue.use(Plugin);
+
 sync(store, router);
 
+Vue.config.productionTip = false;
+
 new Vue({
-  render: (h) => h(App),
   router,
   store,
+  render: (h) => h(App),
 }).$mount('#app');
