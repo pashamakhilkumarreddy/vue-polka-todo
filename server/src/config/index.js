@@ -2,10 +2,13 @@ require('dotenv').config();
 
 module.exports = {
   server: {
-    PORT: parseInt(process.env.PORT, 10),
-    CORS_ORIGIN: process.env.CORS_ORIGIN,
+    PORT: process.env.PORT || '3000',
   },
-  db: {
-    DB_NAME: process.env.DB_NAME,
+  db: {},
+  jwt: {
+    JWT_SECRET: process.env.JWT_SECRET || 'secret',
+    JWT_REFRESH_TOKEN_EXPIRY: process.env.JWT_REFRESH_TOKEN_EXPIRY || '30d',
+    JWT_ACCESS_TOKEN_EXPIRY: process.env.JWT_ACCESS_TOKEN_EXPIRY || '15m',
+    JWT_ISSUER: process.env.JWT_ISSUER || 'stacy',
   },
 };

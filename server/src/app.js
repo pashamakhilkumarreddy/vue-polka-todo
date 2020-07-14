@@ -1,27 +1,27 @@
-const express = require('express');
+const polka = require('polka');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
+const responseTime = require('response-time');
+const send = require('@polka/send-type');
 
-const config = require('./config');
+const {
+  server: {
+    PORT,
+  },
+} = require('./config');
 
-const app = express();
+const app = polka();
 
-app.use(cors({
-  origin: config.server.CORS_ORIGIN
-}));
-
-app.use(helmet());
-app.use(compression());
-
-app.use(express.json());
-
-app.use(express.urlencoded({
-  extended: true
-}));
-
-const PORT = config.server.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.info(`Application is running on ${PORT}`);
-});
+app.use(cors())
+  .use(helmet())
+  .use(compression())
+  .use(responseTime())
+  .use((req, res, next) => {
+    res.send = send;
+    next();
+  })
+  .use(require('./routes'))
+  .listen(PORT, () => {
+    console.info(`The server is up and running on PORT ${PORT}`);
+  });
