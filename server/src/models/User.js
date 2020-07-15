@@ -2,10 +2,16 @@
   eslint-disable no-underscore-dangle
 */
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const {
+  hash,
+  compare,
+} = require('bcryptjs');
 const {
   sign,
 } = require('jsonwebtoken');
+const {
+  v4: uuidv4,
+} = require('uuid');
 
 const {
   jwt,
@@ -47,6 +53,16 @@ const UserSchema = new Schema({
     trim: true,
     minlength: [10, 'Email is too short!'],
     maxlength: [120, 'Email is too long!'],
+    validate: {
+      validator(val) {
+        // eslint-disable-next-line no-useless-escape
+        const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regex.test(val);
+      },
+      message: ({
+        value,
+      }) => `${value} is not a valid email address`,
+    },
   },
   password: {
     type: String,
@@ -65,7 +81,7 @@ const UserSchema = new Schema({
     type: Date,
   },
   doj: {
-    type: Date,
+    type: String,
     default: Date.now,
   },
   isAdmin: {
@@ -90,7 +106,7 @@ const UserSchema = new Schema({
 UserSchema.pre('save', async function hashPassword(next) {
   try {
     if (this.isModified('password') || this.isNew) {
-      const hashedPassword = await bcrypt.hash(this.password, 15);
+      const hashedPassword = await hash(this.password, 15);
       this.password = hashedPassword;
       return next();
     }
@@ -100,6 +116,20 @@ UserSchema.pre('save', async function hashPassword(next) {
     throw err;
   }
 });
+
+UserSchema.methods.genUsername = function genUsername() {
+  const username = uuidv4();
+  return username;
+};
+
+UserSchema.methods.comparePassword = async function comparePassword(password) {
+  try {
+    return await compare(password, this.password);
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
 
 UserSchema.methods.createRefreshToken = function createRefreshToken() {
   try {

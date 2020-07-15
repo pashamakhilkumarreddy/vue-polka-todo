@@ -13,7 +13,8 @@ const {
 
 const app = polka();
 
-app.use(cors())
+app
+  .use(cors())
   .use(helmet())
   .use(compression())
   .use(responseTime())
