@@ -1,0 +1,9 @@
+const SET_USER = 'LOGIN_USER';
+const SET_TOKENS = 'SET_TOKENS';
+const SET_USERTYPE = 'SET_USERTYPE';
+
+export {
+  SET_USER,
+  SET_TOKENS,
+  SET_USERTYPE,
+};

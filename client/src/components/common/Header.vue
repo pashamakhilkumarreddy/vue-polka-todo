@@ -6,15 +6,39 @@
     </section>
 
     <section class="navbar-section">
-      <router-link to="/profile" class="btn btn-link mx-1">Profile</router-link>
-      <router-link to="/login" class="btn btn-link btn-primary mx-1">Log In</router-link>
-      <span class="btn btn-link btn-error mx-1">Log Out</span>
+      <router-link to="/profile" class="btn btn-link mx-1" v-if="isUserLoggedIn">
+        Profile
+      </router-link>
+      <router-link to="/login"
+      class="btn btn-link btn-success mx-1" v-if="!isUserLoggedIn">Log In</router-link>
+      <span class="btn btn-link btn-error mx-1" v-if="isUserLoggedIn"
+      @click.prevent="logout">
+        Log Out
+      </span>
     </section>
   </header>
 </template>
 <script>
+import {
+  mapGetters,
+} from 'vuex';
+
 export default {
   name: 'Header',
+  computed: {
+    ...mapGetters([
+      'isUserLoggedIn',
+    ]),
+  },
+  methods: {
+    logout() {
+      if (this.isUserLoggedIn) {
+        this.$store.dispatch('loginUser', null);
+        this.$store.dispatch('setTokens', null);
+        this.$store.dispatch('setUserType', null);
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

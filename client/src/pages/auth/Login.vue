@@ -49,6 +49,10 @@
   </ValidationObserver>
 </template>
 <script>
+import {
+  mapActions,
+} from 'vuex';
+
 import FormLayout from '../../layouts/FormLayout.vue';
 import AuthenticationService from '../../services/AuthenticationService';
 
@@ -60,6 +64,13 @@ export default {
   metaInfo: {
     title: 'Login',
   },
+  computed: {
+    ...mapActions([
+      'loginUser',
+      'setTokens',
+      'setUserType',
+    ]),
+  },
   data() {
     return {
       user: {
@@ -67,6 +78,7 @@ export default {
         password: '',
         rememberme: true,
       },
+      isLoading: false,
     };
   },
   methods: {
@@ -85,15 +97,20 @@ export default {
             password,
           });
           if (result) {
-            const { status } = result;
             const {
               success,
               user,
               tokens,
             } = result.data;
-            console.info(status, user, tokens, success);
+            if (success && user && tokens) {
+              this.$store.dispatch('loginUser', user);
+              this.$store.dispatch('setTokens', tokens);
+              this.$store.dispatch('setUserType', user.isAdmin);
+              this.$navigateTo({
+                name: 'home',
+              });
+            }
           }
-          console.info(result);
         }
       } catch (err) {
         console.error(err);

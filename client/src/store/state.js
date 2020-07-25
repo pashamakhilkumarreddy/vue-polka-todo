@@ -1,9 +1,9 @@
 export default {
-  user: {
+  user: Object.seal({
     refreshToken: null,
     accessToken: null,
-    userId: null,
+    user: null,
     isLoggedIn: false,
     isAdmin: false,
-  },
+  }),
 };

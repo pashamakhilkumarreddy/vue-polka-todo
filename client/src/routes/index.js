@@ -16,7 +16,7 @@ export default new Router({
     path: '/',
     component: Home,
     name: 'home',
-    alias: ['/home', 'index'],
+    alias: ['/home', '/index'],
   }, {
     path: '/register',
     component: Register,

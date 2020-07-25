@@ -18,11 +18,11 @@ export default {
 }
 
 .form {
-  padding: 1.5rem 2.5rem;
+  padding: 1.5rem 2rem;
   margin: 0.5rem;
   border: 1px solid #ddd;
-  box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.4), 0 0 0.2rem 0 rgba(0, 0, 0, 0.4),
-  0 0 0.2rem 0 rgba(0, 0, 0, 0.4), 0 0 0.2rem 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.2), 0 0 0.25rem 0 rgba(0, 0, 0, 0.2),
+  0 0 0.25rem 0 rgba(0, 0, 0, 0.2), 0 0 0.25rem 0 rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
 }
 </style>

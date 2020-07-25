@@ -63,6 +63,7 @@ export default {
         password: '',
         termsAndCondition: true,
       },
+      isLoading: false,
     };
   },
   methods: {
