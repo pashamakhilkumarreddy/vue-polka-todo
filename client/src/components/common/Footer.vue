@@ -19,6 +19,7 @@ export default {
   width: 100vw;
   border-top: 1px solid #ddd;
   padding: 1rem;
+  font-size: 1rem;
 }
 
 p {

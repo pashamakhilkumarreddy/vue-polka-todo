@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Home from '@/pages/Home.vue';
+import Register from '@/pages/auth/Register.vue';
+import Login from '@/pages/auth/Login.vue';
 
 const PageNotFound = () => import('@/pages/PageNotFound.vue');
 
@@ -16,6 +18,15 @@ export default new Router({
     name: 'home',
     alias: ['/home', 'index'],
   }, {
+    path: '/register',
+    component: Register,
+    name: 'register',
+  }, {
+    path: '/login',
+    component: Login,
+    name: 'login',
+  },
+  {
     path: '*',
     component: PageNotFound,
   }],

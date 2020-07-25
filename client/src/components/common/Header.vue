@@ -20,6 +20,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   border-bottom: 1px solid #ddd;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.6);
+  min-height: 2.3rem;
 }
 </style>

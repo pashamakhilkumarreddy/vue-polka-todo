@@ -1,7 +1,7 @@
 <template>
   <section class="hero hero-lg bg-primary">
     <div class="hero-body">
-      <h1 class="text-center">Welcome to Vue Express Todo</h1>
+      <h1 class="text-center">Welcome to Vue Polka Todo</h1>
     </div>
   </section>
 </template>

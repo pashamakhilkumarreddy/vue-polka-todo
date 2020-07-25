@@ -1,7 +1,9 @@
 export default {
   user: {
-    token: null,
+    refreshToken: null,
+    accessToken: null,
     userId: null,
     isLoggedIn: false,
+    isAdmin: false,
   },
 };

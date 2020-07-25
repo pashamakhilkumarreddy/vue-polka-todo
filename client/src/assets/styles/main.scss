@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --error-color: #f00;
+}
+
 @font-face {
   font-family: 'NunitoSans';
   src: url('../fonts/NunitoSans/NunitoSans-Regular.ttf');
@@ -88,6 +92,21 @@ body {
   min-height: 100vh;
 }
 
+[type='password']::placeholder {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+[type='password']::-webkit-input-placeholder {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+[type='password']:-ms-input-placeholder {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
 .flex-center {
   display: flex;
   flex-flow: row nowrap;
@@ -96,7 +115,19 @@ body {
   flex: 0 0 auto;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 img {
   width: auto;
   height: 100%;
+}
+
+.mt-6 {
+  margin-top: 3rem;
+}
+
+.text-error {
+  color: var(--error-color) !important;
 }
