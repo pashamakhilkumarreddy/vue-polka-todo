@@ -9,9 +9,6 @@ const {
 const {
   sign,
 } = require('jsonwebtoken');
-const {
-  v4: uuidv4,
-} = require('uuid');
 
 const {
   jwt,
@@ -67,7 +64,6 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: [true, 'Password is required'],
-    trim: true,
     minlength: [8, 'Password is too short!'],
   },
   mobile: {
@@ -117,11 +113,6 @@ UserSchema.pre('save', async function hashPassword(next) {
   }
 });
 
-UserSchema.methods.genUsername = function genUsername() {
-  const username = uuidv4();
-  return username;
-};
-
 UserSchema.methods.comparePassword = async function comparePassword(password) {
   try {
     return await compare(password, this.password);
@@ -131,7 +122,7 @@ UserSchema.methods.comparePassword = async function comparePassword(password) {
   }
 };
 
-UserSchema.methods.createRefreshToken = function createRefreshToken() {
+UserSchema.methods.genRefreshToken = function genRefreshToken() {
   try {
     const payload = {
       id: this._id,
@@ -151,7 +142,7 @@ UserSchema.methods.createRefreshToken = function createRefreshToken() {
   }
 };
 
-UserSchema.methods.createAccessToken = function createAccessToken() {
+UserSchema.methods.genAccessToken = function genAccessToken() {
   try {
     const payload = {
       id: this._id,
@@ -180,6 +171,8 @@ UserSchema.methods.formattedUserObj = function formattedUserObj() {
     password,
     isUserArchived,
     isUserVerified,
+    createdAt,
+    updatedAt,
     __v,
     ...rest
   } = obj;
