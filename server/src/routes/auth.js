@@ -5,10 +5,10 @@ const {
   register,
 } = require('../controllers');
 const {
-  validationAuthFields,
+  validateAuthFields,
 } = require('../middlewares');
 
-router.post('/register', validationAuthFields, register)
-  .post('/login', validationAuthFields, login);
+router.post('/register', validateAuthFields, register)
+  .post('/login', validateAuthFields, login);
 
 module.exports = router;

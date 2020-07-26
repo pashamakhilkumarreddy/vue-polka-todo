@@ -8,7 +8,7 @@ const {
 } = require('../utils/validations');
 
 module.exports = {
-  validationAuthFields(req, res, next) {
+  validateAuthFields(req, res, next) {
     try {
       const {
         email,

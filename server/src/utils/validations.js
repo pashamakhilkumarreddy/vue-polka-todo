@@ -12,7 +12,7 @@ const isValidEmail = (email) => {
     isValid: false,
     message: inValidEmailText,
   });
-  if (!email || !email.trim()) {
+  if (!email || !(typeof email === 'string') || !email.trim()) {
     return message;
   }
   return {
@@ -26,7 +26,7 @@ const isValidPassword = (password) => {
     isValid: false,
     message: inValidPasswordText,
   });
-  if (!password || !password.trim()) {
+  if (!password || !(typeof password === 'string') || !password.trim()) {
     return message;
   }
   return {

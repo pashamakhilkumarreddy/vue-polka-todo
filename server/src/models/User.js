@@ -3,6 +3,9 @@
 */
 const mongoose = require('mongoose');
 const {
+  format,
+} = require('date-fns');
+const {
   hash,
   compare,
 } = require('bcryptjs');
@@ -66,6 +69,10 @@ const UserSchema = new Schema({
     required: [true, 'Password is required'],
     minlength: [8, 'Password is too short!'],
   },
+  gender: {
+    type: String,
+    enum: ['female', 'male'],
+  },
   mobile: {
     type: String,
     trim: true,
@@ -78,7 +85,7 @@ const UserSchema = new Schema({
   },
   doj: {
     type: String,
-    default: Date.now,
+    default: format(Date.now(), 'mm-dd-yyyy'),
   },
   isAdmin: {
     type: Boolean,
