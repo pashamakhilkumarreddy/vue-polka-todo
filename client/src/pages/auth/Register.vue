@@ -1,13 +1,13 @@
 <template>
   <ValidationObserver v-slot="{ handleSubmit }">
-    <form-layout #form-content>
+    <form-layout #content>
       <form class="form" autocomplete="off" @submit.prevent="handleSubmit(register)">
         <h2 class="text-center">Register</h2>
         <div class="form-group">
           <label for="register-email" class="form-label">Email</label>
           <ValidationProvider name="Email" rules="required|email|minmax:6,90" :bails="true"
             v-slot="{ errors }">
-            <input type="text" id="register-email" name="loginEmail" class="form-input"
+            <input type="email" id="register-email" name="loginEmail" class="form-input"
               placeholder="username@domain.com" v-model.trim="user.email" required />
             <template v-for="(error, i) of errors">
               <p class="text-error" :key="i">{{ error }}</p>
@@ -98,7 +98,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-p.text-error {
-  margin: 0 !important;
-}
 </style>

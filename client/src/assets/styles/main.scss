@@ -131,3 +131,7 @@ img {
 .text-error {
   color: var(--error-color) !important;
 }
+
+p.text-error {
+  margin: 0 !important;
+}

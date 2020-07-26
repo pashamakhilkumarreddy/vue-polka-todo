@@ -24,4 +24,7 @@ export default {
 };
 </script>
 <style lang="scss">
+.container {
+  padding-bottom: 4rem;
+}
 </style>

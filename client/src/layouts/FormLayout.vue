@@ -1,7 +1,7 @@
 <template>
   <div class="columns mt-6 col-oneline">
-    <div class="column col-xs-12 col-sm-12 col-md-8 col-lg-6 col-4 col-mx-auto">
-      <slot name="form-content">
+    <div class="column col-xs-12 col-sm-12 col-md-8 col-lg-6 col-5 col-mx-auto">
+      <slot name="content">
         <h2>No content here!</h2>
       </slot>
     </div>
@@ -15,6 +15,10 @@ export default {
 <style lang="scss" scoped>
 * {
   font-family: 'NunitoSansSemiBold';
+}
+
+h2 {
+  font-family: 'NunitoSansBold';
 }
 
 .form {
